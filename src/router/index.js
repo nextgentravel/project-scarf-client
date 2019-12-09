@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '@/views/Login';
 import SignUp from '@/views/SignUp';
+import About from '@/views/About';
 
 Vue.use(VueRouter)
 
@@ -36,7 +37,15 @@ const router = new VueRouter(
         meta: {
           requiresAuth: true
         }
-      }
+      },
+      {
+        path: '/about',
+        name: 'About',
+        component: About,
+        meta: {
+          requiresAuth: true
+        }
+      },
     ]
   }
 )
