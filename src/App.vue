@@ -15,7 +15,7 @@
 export default {
   data() {
     return {
-      installBtn: "none",
+      installBtn: "block",
       installer: undefined
     };
   },
