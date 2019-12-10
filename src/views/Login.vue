@@ -1,11 +1,22 @@
 <template>
-  <div class="login">
-    <h3>Sign In</h3>
-    <input type="text" v-model="email" placeholder="Email"><br>
-    <input type="password" v-model="password" placeholder="Password"><br>
-    <button @click="login">Connection</button>
-    <p>You don't have an account ? You can <router-link to="/sign-up">create one</router-link></p>
-  </div>
+  <div class="q-pa-md q-gutter-y-md">
+      <div style="height: 300px;"></div>
+      <q-form class="q-gutter-md">
+        <div>
+          <q-input label="Email" outlined type="text" v-model="email" />
+        </div>
+        <div>
+          <q-input label="Password" outlined type="password" v-model="password" />
+        </div>
+        <div>
+          <q-btn @click="login" color="teal" class="full-width" label="Log In" />
+        </div>
+        <div>
+          <router-link to="/sign-up">Forgot password?</router-link>
+          <router-link style="float:right;" to="/sign-up">Sign Up</router-link>
+        </div>
+      </q-form>
+    </div>
 </template>
 
 <script>
@@ -35,25 +46,5 @@
 </script>
 
 <style scoped>  /* "scoped" attribute limit the CSS to this component only */
-  .login {
-    margin-top: 40px;
-  }
-  input {
-    margin: 10px 0;
-    width: 20%;
-    padding: 15px;
-  }
-  button {
-    margin-top: 20px;
-    width: 10%;
-    cursor: pointer;
-  }
-  p {
-    margin-top: 40px;
-    font-size: 13px;
-  }
-  p a {
-    text-decoration: underline;
-    cursor: pointer;
-  }
+
 </style>
