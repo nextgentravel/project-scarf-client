@@ -1,21 +1,18 @@
 <template>
-  <div class="q-pa-md q-gutter-y-md">
-      <div style="height: 200px;"></div>
-      <q-form class="q-gutter-md">
-        <div>
-          <q-input outlined type="text" v-model="email" placeholder="Email" />
-        </div>
-        <div>
-          <q-input outlined type="password" v-model="password" placeholder="Password" />
-        </div>
-        <div>
-          <q-btn @click="signUp" color="teal" class="full-width" label="Sign Up" />
-        </div>
-        <div>
-          <router-link to="/sign-up">Forgot password?</router-link>
-          <router-link style="float:right;" to="/login">Log In</router-link>
-        </div>
-    </q-form>
+  <div class="sign-up">
+    <p>Let's create a new account !</p>
+    <form>
+      <div>
+        <label>Username</label>
+        <q-input outlined type="text" v-model="email" placeholder="Email" />
+      </div>
+      <div>
+        <label>Password</label>
+        <q-input outlined type="password" v-model="password" placeholder="Password" />
+      </div>
+      <button @click="signUp">Sign Up</button>
+    </form>
+    <span>or go back to <router-link to="/login">login</router-link>.</span>
   </div>
 </template>
 

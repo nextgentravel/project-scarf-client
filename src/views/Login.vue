@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md q-gutter-y-md">
-      <div style="height: 200px;"></div>
+      <div style="height: 300px;"></div>
       <q-form class="q-gutter-md">
         <div>
           <q-input label="Email" outlined type="text" v-model="email" />
