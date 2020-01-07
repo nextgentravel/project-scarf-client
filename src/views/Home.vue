@@ -6,8 +6,8 @@
       <q-btn outline color="black" label="Approved" />
       <q-btn outline color="black" label="Past" />
     </q-btn-group>
-
-    <q-card @click="$router.push({ name: 'TripDetails', params: { userId: '123' } })" class="my-card q-gutter-y" style="border-radius: 30px;">
+    
+    <!-- <q-card @click="$router.push({ name: 'TripDetails', params: { userId: '123' } })" class="my-card q-gutter-y" style="border-radius: 30px;">
       <q-img
         src="https://cdn.quasar.dev/img/parallax1.jpg"
         basic
@@ -28,55 +28,11 @@
           <q-icon style="font-size: 1.8em; background-color: transparent;" name="king_bed" />
         </div>
       </q-img>
-    </q-card>
+    </q-card> -->
 
-    <q-card @click="$router.push({ name: 'TripDetails', params: { userId: '123' } })"  class="my-card q-gutter-y" style="border-radius: 30px;">
-      <q-img
-        src="https://cdn.quasar.dev/img/parallax2.jpg"
-        basic
-      >
-
-        <div class="absolute-top-right text-right">
-          <h6>Pending</h6>
-        </div>
-
-        <div class="absolute-bottom-left text-left" style="background: transparent;">
-          <h6>Winnipeg</h6>
-          <p>Tues, Mar 17 - Thurs, Mar 26 2020</p>
-        </div>
-
-        <div class="absolute-bottom-right text-center" style="background: transparent;">
-          <q-icon style="font-size: 1.8em;" name="airplanemode_active" />
-          <q-icon style="font-size: 1.8em;" name="local_taxi" />
-          <q-icon style="font-size: 1.8em;" name="king_bed" />
-        </div>
-      </q-img>
-    </q-card>
-
-    <q-card @click="$router.push({ name: 'TripDetails', params: { userId: '123' } })" class="my-card q-gutter-y" style="border-radius: 30px;">
-      <q-img
-        src="https://cdn.quasar.dev/img/parallax2.jpg"
-        basic
-      >
-
-        <div class="absolute-top-right text-right">
-          <h6>Pending</h6>
-        </div>
-
-        <div class="absolute-bottom-left text-left" style="background: transparent;">
-          <h6>Winnipeg</h6>
-          <p>Tues, Mar 17 - Thurs, Mar 26 2020</p>
-        </div>
-
-        <div class="absolute-bottom-right text-center" style="background: transparent;">
-          <q-icon style="font-size: 1.8em;" name="airplanemode_active" />
-          <q-icon style="font-size: 1.8em;" name="local_taxi" />
-          <q-icon style="font-size: 1.8em;" name="king_bed" />
-        </div>
-      </q-img>
-    </q-card>
-
-    <div style="height: 100px;"></div>
+    <div style="height: 100px;">
+      <p v-for="trip in trips" :key="trip.id">{{trip}}</p>
+    </div>
 
     <div class="fixed-bottom">
         <q-tabs
@@ -96,10 +52,22 @@
 </template>
 
 <script>
-
-export default {
-  name: 'home',
-}
-
+  export default {
+    name: 'home',
+    created() {
+      this.getTrips();
+    },
+    methods: {
+      getTrips: function () {
+        this.$store.dispatch('trips/fetchAndAdd')
+      }
+    },
+    computed: {
+      trips () {
+        console.log(this.$store.state.trips.data)
+        return this.$store.state.trips.data
+      }
+    }
+  }
 </script>
 

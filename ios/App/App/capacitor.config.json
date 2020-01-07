@@ -1,0 +1,8 @@
+{
+  "appId": "com.nextgentravel.scarf",
+  "appName": "Scarf",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "dist",
+  "cordova": {}
+}
