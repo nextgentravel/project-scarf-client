@@ -1,14 +1,13 @@
 <template>
   <div id="app">
-    <q-layout view="hHh lpR fFf">
-      <q-page-container>
-        <router-view />
-      </q-page-container>
-    </q-layout>
+    <router-view />
   </div>
 </template>
 
 <script>
+
+export default {
+}
 
 </script>
 

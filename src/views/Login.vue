@@ -1,21 +1,21 @@
 <template>
-  <div class="q-pa-md q-gutter-y-md">
-      <div style="height: 300px;"></div>
-      <q-form class="q-gutter-md">
-        <div>
-          <q-input label="Email" outlined type="text" v-model="email" />
-        </div>
-        <div>
-          <q-input label="Password" outlined type="password" v-model="password" />
-        </div>
-        <div>
-          <q-btn @click="login" color="teal" class="full-width" label="Log In" />
-        </div>
-        <div>
+  <div class="">
+      <!-- <div style="height: 300px;"></div> -->
+      <b-form>
+        <b-form-group>
+          <b-input label="Email" outlined type="text" v-model="email" />
+        </b-form-group>
+        <b-form-group>
+          <b-input label="Password" outlined type="password" v-model="password" />
+        </b-form-group>
+        <b-form-group>
+          <b-button @click="login">Log In</b-button>
+        </b-form-group>
+        <b-form-group>
           <router-link to="/sign-up">Forgot password?</router-link>
           <router-link style="float:right;" to="/sign-up">Sign Up</router-link>
-        </div>
-      </q-form>
+        </b-form-group>
+      </b-form>
     </div>
 </template>
 

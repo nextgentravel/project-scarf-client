@@ -1,59 +1,57 @@
-<template>
-  <div class="q-pa-md q-gutter-y-md">
-    <q-btn-group spread>
-      <q-btn outline color="black" label="All" />
-      <q-btn outline color="black" label="Pending"/>
-      <q-btn outline color="black" label="Approved" />
-      <q-btn outline color="black" label="Past" />
-    </q-btn-group>
-    
-    <!-- <q-card @click="$router.push({ name: 'TripDetails', params: { userId: '123' } })" class="my-card q-gutter-y" style="border-radius: 30px;">
-      <q-img
-        src="https://cdn.quasar.dev/img/parallax1.jpg"
-        basic
+<template id="main">
+  <div>
+    <b-container id="content-container">
+      <b-card
+        v-for="trip in trips"
+        v-bind:key="trip.index"
+        @click="$router.push({ name: 'Trip Details', params: { trip } })"
+        v-bind:style="{ 
+          // backgroundImage: 'url(' + trip.image + ')',
+          // backgroundSize: 'cover',
+          position: 'relative',
+          // overflow: 'hidden',
+          minHeight: '230px'
+        }"
       >
-
-        <div class="absolute-top-right text-right">
-          <h6>Pending</h6>
+        <div style="border: 1px solid white; position: absolute; right: 0px; top: 0px; background-color: #ccc; color: #000; width: 25%; height: 15%; text-align: center; line-height: 180%; vertical-align: middle;">
+          {{trip.tripStatus}}
         </div>
 
-        <div class="absolute-bottom-left text-left" style="background: transparent;">
-          <h6>Winnipeg</h6>
-          <p>Tues, Mar 17 - Thurs, Mar 26 2020</p>
+        <div style="padding-left: 10px; color: #000; position: absolute; left: 0px; bottom: 0px; width: 80%; height: 40%;">
+          <h3>{{trip.destination}}</h3>
+          <p>{{moment(trip.startDate.toDate()).format('ddd Do MMM')}} - {{moment(trip.endDate.toDate()).format('ddd Do MMM, YYYY')}}</p>
         </div>
-
-        <div class="absolute-bottom-right text-center" style="background: transparent;">
-          <q-icon style="font-size: 1.8em; background-color: transparent;" name="airplanemode_active" />
-          <q-icon style="font-size: 1.8em; background-color: transparent;" name="local_taxi" />
-          <q-icon style="font-size: 1.8em; background-color: transparent;" name="king_bed" />
+        <div style="position: absolute; right: 0px; bottom: 0px; width: 30%; height: 15%; color: #000; text-align: center; line-height: 180%; vertical-align: middle;">
+          <b-icon-person font-scale="2" class="border rounded"></b-icon-person>
+          <b-icon-person font-scale="2" class="border rounded"></b-icon-person>
+          <b-icon-person font-scale="2" class="border rounded"></b-icon-person>
         </div>
-      </q-img>
-    </q-card> -->
-
-    <div style="height: 100px;">
-      <p v-for="trip in trips" :key="trip.id">{{trip}}</p>
-    </div>
-
-    <div class="fixed-bottom">
-        <q-tabs
-          dense
-          class="bg-white text-grey"
-          style="border-top: 1px solid grey; padding-top: 10px;"
-        >
-          <q-tab style="border: 1px solid grey; border-radius: 5px; margin: 10px; padding: 6px; font-size: 1.4em;" name="home" icon="home" />
-          <q-tab style="border: 1px solid grey; border-radius: 5px; margin: 10px; padding: 6px; font-size: 1.4em;" name="search" icon="search" />
-          <q-tab style="border: 1px solid grey; border-radius: 5px; margin: 10px; padding: 6px; font-size: 1.4em;" name="alarm" icon="alarm" />
-          <q-tab style="border: 1px solid grey; border-radius: 5px; margin: 10px; padding: 6px; font-size: 1.4em;" name="person" icon="account_circle" />
-        </q-tabs>
-        <q-btn class="absolute-bottom-right" round color="teal" icon="add" />
-    </div>
-    
+      </b-card>
+      <b-icon-plus 
+        font-scale="4"
+        icon="plus"
+        class="rounded-circle bg-info p-1"
+        variant="light"
+        style="position: fixed; bottom: 100; right: 30;"
+        @click="$router.push({ name: 'New Trip'})"
+      >
+      </b-icon-plus>
+    </b-container>
+    <NavBar />
   </div>
 </template>
 
 <script>
+  import moment from 'moment';
+  import NavBar from '../components/NavBar'
   export default {
-    name: 'home',
+    name: 'Home',
+    data() {
+      return {
+        moment,
+      }
+    },
+    components: { NavBar },
     created() {
       this.getTrips();
     },
@@ -64,7 +62,6 @@
     },
     computed: {
       trips () {
-        console.log(this.$store.state.trips.data)
         return this.$store.state.trips.data
       }
     }

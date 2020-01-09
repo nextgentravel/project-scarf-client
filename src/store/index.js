@@ -11,11 +11,22 @@ const easyFirestore = VuexEasyFirestore(
   {logging: true, FirebaseDependency: Firebase}
 )
 
-
 const storeData = {
   plugins: [easyFirestore],
-  state: {
-
+  modules: {
+    tabbar: {
+      index: 0,
+      strict: true,
+      namespaced: true,
+      state: {
+        index: 1
+      },
+      mutations: {
+        set(state, index) {
+          state.index = index;
+        }
+      }
+    }
   },
 }
 

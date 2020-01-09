@@ -5,8 +5,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '@/views/Login';
 import SignUp from '@/views/SignUp';
-import About from '@/views/About';
+import Notifications from '@/views/Notifications';
 import TripDetails from '@/views/TripDetails';
+import NewTrip from '@/views/NewTrip';
 
 Vue.use(VueRouter)
 
@@ -40,21 +41,31 @@ const router = new VueRouter(
         }
       },
       {
-        path: '/about',
-        name: 'About',
-        component: About,
+        path: '/notifications',
+        name: 'Notifications',
+        component: Notifications,
         meta: {
           requiresAuth: true
         }
       },
       {
         path: '/trip/details',
-        name: 'TripDetails',
+        name: 'Trip Details',
         component: TripDetails,
         meta: {
           requiresAuth: true
         }
       },
+      {
+        path: '/trip/new',
+        name: 'New Trip',
+        component: NewTrip,
+        meta: {
+          requiresAuth: true
+        }
+      },
+
+
     ]
   }
 )
